@@ -9,6 +9,7 @@ from Crypto.Hash import SHA256
 ModuleNotFoundError: No module named ‘Crypto’
 
 安装模块命令：pip install pycryptodome
+对于python3: pip3 install pycryptodome
 
 第四步：执行脚本，找回密码。
 打开 CMD 窗口，进入脚本存放目录位置，如图：
