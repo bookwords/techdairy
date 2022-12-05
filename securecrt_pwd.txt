@@ -1,0 +1,43 @@
+主机搭建 Python3 环境。
+由于脚本为 Python 脚本，需要 Python 环境才能执行，需要在 Windows 主机上安装 Python3 环境。该步骤此处省略，请自行安装并配置环境变量等。
+
+另外注意，需要安装模块 pycryptodome，否则在第四步执行命令时，会报如下错误：
+
+Traceback (most recent call last):
+File “SecureCRTCipher.py”, line 3, in
+from Crypto.Hash import SHA256
+ModuleNotFoundError: No module named ‘Crypto’
+
+安装模块命令：pip install pycryptodome
+
+第四步：执行脚本，找回密码。
+打开 CMD 窗口，进入脚本存放目录位置，如图：
+
+img
+
+SecureCRT 的版本不同，加密格式有两种。
+
+格式一：
+
+S:“Password V2”=02:30d93758e1ea303c18235301266dc93a5d69070b40668251a2c75de132a5a034b018dab1a172bd73da69151d6fd4099824f2a4fb5f57c5f854e9a9012ff0e6c1
+
+执行命令：python SecureCRTCipher.py dec -v2 30d93758e1ea303c18235301266dc93a5d69070b40668251a2c75de132a5a034b018dab1a172bd73da69151d6fd4099824f2a4fb5f57c5f854e9a9012ff0e6c1
+
+注意：-V2 参数后的值，是格式一中【=】后面的值，并且去掉【02：】。
+
+执行后，可以看到明文密码已经输出到终端中了，如图：
+
+img
+
+格式二：
+
+S:“Password”=uc71bd1c86f3b804e42432f53247c50d9287f410c7e59166969acab69daa6eaadbe15c0c54c0e076e945a6d82f9e13df2
+
+执行命令：python SecureCRTCipher.py dec c71bd1c86f3b804e42432f53247c50d9287f410c7e59166969acab69daa6eaadbe15c0c54c0e076e945a6d82f9e13df2
+
+注意：dec 后的值，是格式二中【=】后面的值，并且去掉【u】。
+
+执行后，可以看到明文密码已经输出到终端中了，如图：
+
+img
+Good Luck！
